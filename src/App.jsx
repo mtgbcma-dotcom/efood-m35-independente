@@ -1,10 +1,14 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
+
 import Home from './pages/Home'
 import Restaurant from './pages/Restaurant'
-export default function App(){
-  return <Routes>
-    <Route path="/" element={<Home/>}/>
-    <Route path="/restaurante/:id" element={<Restaurant/>}/>
-    <Route path="*" element={<Navigate to="/" replace/>}/>
+
+const App = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/restaurante/:id" element={<Restaurant />} />
+    <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
-}
+)
+
+export default App

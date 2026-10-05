@@ -1,6 +1,72 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
 import { colors } from '../../styles'
-export const Header=styled.header`background:${colors.soft};>div{min-height:140px;display:flex;justify-content:space-between;align-items:center}a{text-decoration:none;font-weight:900}strong{font-size:38px}`
-export const Hero=styled.section`height:280px;background:linear-gradient(#0008,#0008),url('${p=>p.$img}') center/cover;color:white;>div{height:100%;padding:24px 0;display:flex;flex-direction:column;justify-content:space-between}`
-export const Menu=styled.section`padding-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;@media(max-width:800px){grid-template-columns:1fr}`
-export const Card=styled.article`padding:8px;background:${colors.salmon};color:white;display:flex;flex-direction:column;min-height:390px;img{height:170px;object-fit:cover}h2,p{margin-top:10px}button{margin-top:auto;padding:10px;border:0}`
+
+export const ProfileHeader = styled.header`
+  min-height: 186px;
+  background-color: ${colors.peach};
+  background-image: url('${({ $pattern }) => $pattern}');
+  background-repeat: repeat;
+`
+
+export const HeaderContent = styled.div`
+  min-height: 186px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 24px 0;
+  }
+`
+
+export const Back = styled(Link)`
+  color: ${colors.salmon};
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 900;
+`
+
+export const Logo = styled.img`
+  width: 124px;
+`
+
+export const CartCount = styled.span`
+  justify-self: end;
+  color: ${colors.salmon};
+  font-size: 18px;
+  font-weight: 900;
+
+  @media (max-width: 680px) {
+    justify-self: center;
+  }
+`
+
+export const HeroImage = styled.img`
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+`
+
+export const Main = styled.main`
+  min-height: 400px;
+  padding-top: 56px;
+`
+
+export const MenuGrid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+
+  @media (max-width: 880px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 580px) {
+    grid-template-columns: 1fr;
+  }
+`

@@ -1,7 +1,43 @@
-export const restaurants=[
-{id:1,nome:'Bella Tavola',tipo:'Italiana',avaliacao:4.8,destaque:true,imagem:'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80',descricao:'Massas, pizzas e receitas clássicas italianas.',cardapio:[
-{id:101,nome:'Pizza Marguerita',descricao:'Molho de tomate, mozzarella e manjericão.',preco:49.9,foto:'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80'},
-{id:102,nome:'Lasanha',descricao:'Lasanha artesanal gratinada.',preco:54.9,foto:'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=900&q=80'}]},
-{id:2,nome:'Sakura Sushi',tipo:'Japonesa',avaliacao:4.9,destaque:true,imagem:'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80',descricao:'Sushi, sashimi e pratos japoneses.',cardapio:[
-{id:201,nome:'Combinado Especial',descricao:'Seleção de sushi e sashimi.',preco:79.9,foto:'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80'},
-{id:202,nome:'Temaki Salmão',descricao:'Temaki de salmão com cebolinha.',preco:32.9,foto:'https://images.unsplash.com/photo-1562158074-d49fbeffcc91?auto=format&fit=crop&w=900&q=80'}]}]
+import sushiImage from '../assets/sushi-card.jpg'
+import pastaImage from '../assets/pasta-card.jpg'
+import pizzaImage from '../assets/pizza.jpg'
+import profileHero from '../assets/hero-profile.jpg'
+
+const sushiDescription =
+  'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!'
+
+const italianDescription =
+  'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!'
+
+const pizzaDescription =
+  'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
+
+export const restaurants = [
+  {
+    id: 1,
+    nome: 'Hioki Sushi',
+    avaliacao: 4.9,
+    imagem: sushiImage,
+    descricao: sushiDescription
+  },
+  ...Array.from({ length: 5 }, (_, index) => ({
+    id: index + 2,
+    nome: 'La Dolce Vita Trattoria',
+    avaliacao: 4.6,
+    imagem: pastaImage,
+    descricao: italianDescription
+  }))
+]
+
+export const profileRestaurant = {
+  id: 2,
+  nome: 'La Dolce Vita Trattoria',
+  categoria: 'Italiana',
+  hero: profileHero,
+  cardapio: Array.from({ length: 6 }, (_, index) => ({
+    id: index + 1,
+    nome: 'Pizza Marguerita',
+    descricao: pizzaDescription,
+    imagem: pizzaImage
+  }))
+}

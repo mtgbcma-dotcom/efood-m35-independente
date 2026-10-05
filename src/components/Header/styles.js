@@ -1,6 +1,36 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+
 import { colors } from '../../styles'
-export const Hero=styled.header`background:${colors.soft};min-height:360px`
-export const Brand=styled(Link)`display:block;padding-top:40px;text-align:center;text-decoration:none;font-size:42px;font-weight:900;letter-spacing:-3px`
-export const Title=styled.h1`margin-top:180px;text-align:center;font-size:36px`
+
+export const HeaderArea = styled.header`
+  min-height: 384px;
+  background-color: ${colors.peach};
+  background-image: url('${({ $pattern }) => $pattern}');
+  background-repeat: repeat;
+`
+
+export const HeaderContent = styled.div`
+  min-height: 384px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 40px;
+`
+
+export const Logo = styled.img`
+  width: 124px;
+  height: auto;
+`
+
+export const Title = styled.h1`
+  margin-top: auto;
+  color: ${colors.salmon};
+  font-size: 36px;
+  line-height: 1.05;
+  font-weight: 900;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+  }
+`

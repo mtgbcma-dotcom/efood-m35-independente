@@ -1,2 +1,36 @@
-import { Card,Image,Content,Button } from './styles'
-export default function RestaurantCard({r}){return <Card><Image src={r.imagem} alt={r.nome}/><Content><h2>{r.nome}</h2><strong>{r.avaliacao.toFixed(1)} ★</strong><p>{r.descricao}</p><Button to={`/restaurante/${r.id}`}>Saiba mais</Button></Content></Card>}
+import {
+  Card,
+  Image,
+  Content,
+  TopLine,
+  Name,
+  Rating,
+  Star,
+  Description,
+  More
+} from './styles'
+
+const RestaurantCard = ({ restaurant }) => (
+  <Card>
+    <Image src={restaurant.imagem} alt={restaurant.nome} />
+
+    <Content>
+      <TopLine>
+        <Name>{restaurant.nome}</Name>
+
+        <Rating>
+          {restaurant.avaliacao.toFixed(1)}
+          <Star>★</Star>
+        </Rating>
+      </TopLine>
+
+      <Description>{restaurant.descricao}</Description>
+
+      <More to="/restaurante/2">
+        Saiba mais
+      </More>
+    </Content>
+  </Card>
+)
+
+export default RestaurantCard

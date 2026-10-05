@@ -1,6 +1,30 @@
-import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import Header from '../../components/Header'
 import RestaurantCard from '../../components/RestaurantCard'
 import { restaurants } from '../../data/restaurants'
-import { Main,Grid } from './styles'
-export default function Home(){return <><Header/><Main><Grid className="container">{restaurants.map(r=><RestaurantCard key={r.id} r={r}/>)}</Grid></Main><Footer/></>}
+
+import {
+  Main,
+  Grid
+} from './styles'
+
+const Home = () => (
+  <>
+    <Header />
+
+    <Main>
+      <Grid className="container">
+        {restaurants.map((restaurant) => (
+          <RestaurantCard
+            key={restaurant.id}
+            restaurant={restaurant}
+          />
+        ))}
+      </Grid>
+    </Main>
+
+    <Footer />
+  </>
+)
+
+export default Home

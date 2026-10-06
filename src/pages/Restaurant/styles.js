@@ -1,17 +1,18 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-
 import { colors } from '../../styles'
 
 export const ProfileHeader = styled.header`
-  min-height: 186px;
+  height: 163px;
   background-color: ${colors.peach};
   background-image: url('${({ $pattern }) => $pattern}');
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
 `
 
 export const HeaderContent = styled.div`
-  min-height: 186px;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -20,7 +21,7 @@ export const HeaderContent = styled.div`
   @media (max-width: 680px) {
     grid-template-columns: 1fr;
     justify-items: center;
-    padding: 24px 0;
+    padding: 18px 0;
   }
 `
 
@@ -28,32 +29,77 @@ export const Back = styled(Link)`
   color: ${colors.salmon};
   text-decoration: none;
   font-size: 18px;
+  line-height: 21px;
   font-weight: 900;
 `
 
 export const Logo = styled.img`
-  width: 124px;
+  width: 125px;
+  height: auto;
 `
 
-export const CartCount = styled.span`
+export const CartButton = styled.button`
   justify-self: end;
+  border: 0;
+  background: transparent;
   color: ${colors.salmon};
   font-size: 18px;
+  line-height: 21px;
   font-weight: 900;
+  white-space: nowrap;
 
   @media (max-width: 680px) {
     justify-self: center;
   }
 `
 
-export const HeroImage = styled.img`
-  width: 100%;
+export const Hero = styled.section`
+  position: relative;
   height: 280px;
+  overflow: hidden;
+  background-image: ${({ $image }) => ($image ? `url('${$image}')` : 'none')};
+  background-size: cover;
+  background-position: center;
+`
+
+export const HeroBackground = styled.img`
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+`
+
+export const HeroOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+`
+
+export const HeroContent = styled.div`
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 24px;
+  padding-bottom: 32px;
+  color: ${colors.white};
+`
+
+export const Category = styled.h2`
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 100;
+`
+
+export const RestaurantName = styled.h1`
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 900;
 `
 
 export const Main = styled.main`
-  min-height: 400px;
   padding-top: 56px;
 `
 

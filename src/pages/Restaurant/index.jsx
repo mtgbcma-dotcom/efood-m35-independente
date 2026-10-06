@@ -1,30 +1,39 @@
-import { useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 
 import Footer from '../../components/Footer'
 import MenuCard from '../../components/MenuCard'
+import Cart from '../../components/Cart'
 import logo from '../../assets/logo.png'
-import pattern from '../../assets/header-pattern.png'
-import { profileRestaurant } from '../../data/restaurants'
-
+import pattern from '../../assets/profile-pattern.png'
+import italianHero from '../../assets/profile-hero.jpg'
+import { getProfileByRestaurantId } from '../../data/restaurants'
+import { useCart } from '../../context/CartContext'
 import {
   ProfileHeader,
   HeaderContent,
   Back,
   Logo,
-  CartCount,
-  HeroImage,
+  CartButton,
+  Hero,
+  HeroBackground,
+  HeroOverlay,
+  HeroContent,
+  Category,
+  RestaurantName,
   Main,
   MenuGrid
 } from './styles'
 
 const Restaurant = () => {
   const { id } = useParams()
-  const [cartCount, setCartCount] = useState(0)
+  const { count, openCart } = useCart()
 
-  if (!id) {
-    return <Navigate to="/" replace />
-  }
+  if (!id) return <Navigate to="/" replace />
+
+  const restaurant = getProfileByRestaurantId(id)
+  if (!restaurant) return <Navigate to="/" replace />
+
+  const isItalianReference = Number(id) !== 1
 
   return (
     <>
@@ -32,31 +41,38 @@ const Restaurant = () => {
         <HeaderContent className="container">
           <Back to="/">Restaurantes</Back>
           <Logo src={logo} alt="efood" />
-
-          <CartCount>
-            {cartCount} produto(s) no carrinho
-          </CartCount>
+          <CartButton type="button" onClick={openCart}>
+            {count} produto(s) no carrinho
+          </CartButton>
         </HeaderContent>
       </ProfileHeader>
 
-      <HeroImage
-        src={profileRestaurant.hero}
-        alt="Italiana - La Dolce Vita Trattoria"
-      />
+      {isItalianReference ? (
+        <Hero aria-label="Italiana - La Dolce Vita Trattoria">
+          <HeroBackground src={italianHero} alt="" />
+          <span className="sr-only">Italiana</span>
+          <h1 className="sr-only">La Dolce Vita Trattoria</h1>
+        </Hero>
+      ) : (
+        <Hero $image={restaurant.hero}>
+          <HeroOverlay />
+          <HeroContent className="container">
+            <Category>{restaurant.categoria}</Category>
+            <RestaurantName>{restaurant.nome}</RestaurantName>
+          </HeroContent>
+        </Hero>
+      )}
 
       <Main>
         <MenuGrid className="container">
-          {profileRestaurant.cardapio.map((item) => (
-            <MenuCard
-              key={item.id}
-              item={item}
-              onAdd={() => setCartCount((value) => value + 1)}
-            />
+          {restaurant.cardapio.map((item) => (
+            <MenuCard key={item.id} item={item} />
           ))}
         </MenuGrid>
       </Main>
 
       <Footer />
+      <Cart />
     </>
   )
 }

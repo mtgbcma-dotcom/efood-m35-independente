@@ -5,7 +5,8 @@ export const colors = {
   cream: '#FFF8F2',
   peach: '#FFEBD9',
   white: '#FFFFFF',
-  gold: '#F5A623'
+  gold: '#FFB930',
+  overlay: 'rgba(0, 0, 0, 0.78)'
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -24,12 +25,33 @@ export const GlobalStyle = createGlobalStyle`
     background: ${colors.cream};
     color: ${colors.salmon};
     font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body.cart-open {
+    overflow: hidden;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
   }
 
   button {
-    font-family: inherit;
     cursor: pointer;
+  }
+
+  a {
+    color: inherit;
   }
 
   img {
@@ -37,12 +59,20 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 100%;
   }
 
-  a {
-    color: inherit;
-  }
-
   .container {
     width: min(1024px, calc(100% - 32px));
     margin: 0 auto;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 `

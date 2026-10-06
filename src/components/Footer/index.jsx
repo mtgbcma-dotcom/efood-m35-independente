@@ -1,31 +1,12 @@
-import logo from '../../assets/logo.png'
-
-import {
-  FooterArea,
-  FooterContent,
-  Logo,
-  Socials,
-  Social,
-  Disclaimer
-} from './styles'
+import footerImage from '../../assets/footer-figma.png'
+import { FooterArea, FooterImage } from './styles'
 
 const Footer = () => (
   <FooterArea>
-    <FooterContent className="container">
-      <Logo src={logo} alt="efood" />
-
-      <Socials>
-        <Social>◎</Social>
-        <Social>f</Social>
-        <Social>♥</Social>
-      </Socials>
-
-      <Disclaimer>
-        A efood é uma plataforma para divulgação de estabelecimentos, a
-        responsabilidade pela entrega, qualidade dos produtos é toda do
-        estabelecimento contratado.
-      </Disclaimer>
-    </FooterContent>
+    <FooterImage
+      src={footerImage}
+      alt="efood - redes sociais e informações da plataforma"
+    />
   </FooterArea>
 )
 
